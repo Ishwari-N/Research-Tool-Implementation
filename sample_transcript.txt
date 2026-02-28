@@ -1,0 +1,5 @@
+Good morning, everyone, and thanks for joining us today. This quarter, I am pleased to say our results reflect strong momentum, giving us a highly optimistic outlook. We are seeing incredible demand for our new enterprise solutions. We secured a major multi-year contract with a Fortune 500 retailer last week, which gives us high confidence in our short-term pipeline.
+
+However, we did experience some supply chain hiccups in Southeast Asia, leading to slightly elevated freight costs. It's a key challenge right now alongside currency fluctuations. Overall, though, our capacity utilization trended upwards to 85% this quarter, compared to 80% last quarter. 
+
+In terms of guidance, we expect robust, double-digit revenue growth in the second half of the year, though we aren't providing specific numerical margin targets right now. Further, we are launching two new growth initiatives: a cloud-native migration service and an AI-driven predictive analytics tool. Both will hit general availability next month. We remain highly confident these will be well received.

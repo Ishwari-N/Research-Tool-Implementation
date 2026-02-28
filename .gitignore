@@ -1,0 +1,17 @@
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.txt
+!sample_transcript.txt
+!requirements.txt
+models_list.txt
+diagnostics_result.txt
+diagnostics_result_utf8.txt
+actual_models.txt
+actual_models_utf8.txt
+full_models.txt
+test_gemini.py
+test_groq_json.py
+diagnose_providers.py
+list_models.py
