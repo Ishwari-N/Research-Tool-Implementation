@@ -3,17 +3,32 @@ import PyPDF2
 from extractor import extract_earnings_summary
 import os
 
+from dotenv import load_dotenv
+
+# Load local environment variables
+load_dotenv()
+
 st.set_page_config(page_title="Earnings Call Summary App", page_icon="📈", layout="wide")
 
 st.title("📈 Earnings Call Summary App")
 st.write("Upload an earnings call transcript (PDF/TXT) or paste it directly to extract a structured commentary.")
 
-# Quick check to ensure API keys exist
-gemini_key = os.getenv("GEMINI_API_KEY")
-groq_key = os.getenv("GROQ_API_KEY")
+# Helper to get API keys from env or Streamlit secrets
+def get_api_key(name):
+    key = os.getenv(name)
+    if not key and name in st.secrets:
+        key = st.secrets[name]
+    return key
+
+gemini_key = get_api_key("GEMINI_API_KEY")
+groq_key = get_api_key("GROQ_API_KEY")
 
 if not gemini_key and not groq_key:
-    st.error("⚠️ No API keys found! Ensure .env contains GEMINI_API_KEY or GROQ_API_KEY.")
+    st.error("⚠️ **API Keys Missing!**")
+    st.info("""
+    - **Running Locally?** Ensure you have a `.env` file with `GEMINI_API_KEY` or `GROQ_API_KEY`.
+    - **Running on Streamlit Cloud?** Add these keys in **Settings > Secrets**.
+    """)
 
 st.info("💡 **AI Engine:** Dual-Provider Fallback Active (Trying Groq first, then Gemini).")
 

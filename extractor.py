@@ -67,8 +67,16 @@ def clean_json_string(content: str) -> str:
         return content[start_idx:end_idx + 1]
     return content
 
+def get_key(name: str) -> str:
+    # Check env first, then streamlit secrets
+    import streamlit as st
+    key = os.getenv(name)
+    if not key and name in st.secrets:
+        key = st.secrets[name]
+    return key
+
 def extract_with_groq(transcript_text: str) -> str:
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = get_key("GROQ_API_KEY")
     if not api_key:
         raise ValueError("Groq API Key missing.")
     
@@ -97,7 +105,7 @@ def extract_with_groq(transcript_text: str) -> str:
     raise RuntimeError("All Groq models hit rate limits.")
 
 def extract_with_gemini(transcript_text: str) -> str:
-    api_key = os.getenv("GEMINI_API_KEY")
+    api_key = get_key("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("Gemini API Key missing.")
     
